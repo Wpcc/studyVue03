@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+  var book = {
+    data:{
+      name:'wpc'
+    }
+  }
+  var book1 = {
+    data:{
+      name:'ll'
+    }
+  }
+  //通过defineProperty实现代理
+  book.__proxyData = function(item){
+    var obj = this
+    Object.defineProperty(obj,item,{
+      configurable:false,
+      enumerable:true,
+      get(){
+        return obj.data.item
+      },
+      set(newVal){
+        obj.data.item = newVal
+      }
+    })
+  }
+  //循环
+  Object.keys(book.data).forEach(item => {
+    book.__proxyData(item)
+  })
+
+  console.log(book)
+  console.log(book1)
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>hello</li>
+    <li>hello</li>
+    <li>hello</li>
+  </ul>
+</body>
+<script>
+  // 通过fragment更新元素内容
+  var oUl = document.querySelector('ul')
+  // 1.创建fragment
+  var fragment = document.createDocumentFragment()
+  // 2.取出文档节点放置到fragment容器中
+  var child
+  while(child = oUl.firstChild){ //该步骤做两件事：1、将DOM节点赋值给child。2、判断是否还有该节点
+    fragment.appendChild(child)  //appendChild 会将文档元素节点赋值给fragment
+  }
+  // 3.更新
+  var arr = Array.prototype.slice.call(fragment.childNodes)
+  console.log(arr)
+  arr.forEach(item => {
+    if(item.nodeType === 1){
+      item.textContent= 'world' //改变元素节点中文本节点内容 == innerHTML
+    }
+  })
+
+  // 4.插入到页面
+  oUl.appendChild(fragment)
+</script>
+</html>

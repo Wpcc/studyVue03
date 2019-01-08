@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .red{
+    color:red
+  }
+  </style>
+  <script src="./js/vue.js"></script>
+</head>
+<body>
+<div id="app" :class="className">{{name}}</div>
+</body>
+<script>
+  var vm = new Vue({
+    el:'#app',
+    data:{
+      name:'wpc',
+      className:'red'
+    }
+  })
+</script>
+</html>
